@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block title %}Show All Customers{% endblock %}
+
+<head>
+    {% block head %}
+    {{ super() }}
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #7221be;
+            color: white;
+        }
+    </style>
+    {% endblock %}
+
+</head>
+{% block content %}
+<h1>All Customers</h1>
+
+<form id="addCustForm" method="POST">
+    <label>Name: <input type="text" name="customerInputName"></label><br>
+    <br><input type="submit" value="Search">
+    <button form="addCustForm"><a href="/customers/displaycustomers"
+            style='color: rgb(0, 0, 0); text-decoration: none;'> Reset
+        </a> </button>
+</form><br>
+
+
+<div class="table">
+    <table id="customers">
+        <tr>
+            <th>CustomerID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+        </tr>
+        {% for customer in customerTable %}
+        <tr>
+            <td>{{customer[0]}}</td>
+            <td>{{customer[1]}}</td>
+            <td>{{customer[2]}}</td>
+            <td>{{customer[3]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+{% block sidebar %}
+<a href="/customers/displaycustomers">Display all customers</a>
+<a href="/customers/addcustomer">Add a customer</a>
+<a href="/customers/removecustomer">Remove a customer</a>
+{% endblock %}
+{% block footer %}
+{{super()}}
+{% endblock %}

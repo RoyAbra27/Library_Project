@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}Add a Book{% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+
+</style>
+{% endblock %}
+{% block content %}
+<h1>Add a Book</h1>
+
+<form method="POST">
+    <label>Book name: <input type="text" name="bookName" required></label><br>
+    <label>Author: <input type="text" name="bookAuthor" required></label><br>
+    <label>Year published: <input type="number" name="bookYear" step="1" value="2022" min="0" max="2022"
+            required></label><br>
+    <label>Loan type: <select name="bookLoanType" required>
+            <option value="1">1 - up to 10 days</option>
+            <option value="2">2 - up to 5 days</option>
+            <option value="3">3 - up to 2 days</option>
+        </select></label><br>
+    <input type="submit" value="Submit">
+</form><br>
+<strong>{{msg}}</strong>
+{% endblock %}
+{% block sidebar %}
+<a href="/books/displaybooks">Display all books</a>
+<a href="/books/addbook">Add a book</a>
+<a href="/books/removebook">Remove a book</a>
+{% endblock %}
+{% block footer %}
+{{super()}}
+{% endblock %}

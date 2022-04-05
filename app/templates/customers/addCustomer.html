@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Add a Customer{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+{% block content %}
+<h1>Add a Customer</h1>
+<form method="POST">
+    <label>Name: <input type="text" name="custName" required></label><br>
+    <label>age: <input type="number" name="custAge" required></label><br>
+    <label>city: <input type="text" name="custCity" required></label><br>
+    <input type="submit" value="Submit">
+</form><br>
+<strong>{{msg}}</strong>
+{% endblock %}
+{% block sidebar %}
+<a href="/customers/displaycustomers">Display all customers</a>
+<a href="/customers/addcustomer">Add a customer</a>
+<a href="/customers/removecustomer">Remove a customer</a>
+{% endblock %}
+{% block footer %}
+{{super()}}
+{% endblock %}

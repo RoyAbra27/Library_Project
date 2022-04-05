@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block title %}Show Late Loans{% endblock %}
+
+<head>
+    {% block head %}
+    {{ super() }}
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #7221be;
+            color: white;
+
+        }
+    </style>
+    {% endblock %}
+
+    <head>
+        {% block content %}
+        <h1>Late Loans</h1>
+        <div class="table">
+            <table id="customers">
+                <tr>
+                    <th>CustomerID</th>
+                    <th>BookID</th>
+                    <th>Loan Date</th>
+                    <th>Book Type</th>
+                    <th>Late By</th>
+                </tr>{{msg}}
+                {% for loan in lateList %}
+
+                {% if loan[3] == 1 %}
+                <tr>
+                    <td>{{loan[0]}}</td>
+                    <td>{{loan[1]}}</td>
+                    <td>{{loan[2]}}</td>
+                    <td>{{loan[3]}}</td>
+                    <td>{{msgDict['msgType1']}}</td>
+                </tr>
+                {% elif loan[3] == 2 %}
+                <tr>
+                    <td>{{loan[0]}}</td>
+                    <td>{{loan[1]}}</td>
+                    <td>{{loan[2]}}</td>
+                    <td>{{loan[3]}}</td>
+                    <td>{{msgDict['msgType2']}}</td>
+                </tr>
+                {% elif loan[3] == 3 %}
+                <tr>
+                    <td>{{loan[0]}}</td>
+                    <td>{{loan[1]}}</td>
+                    <td>{{loan[2]}}</td>
+                    <td>{{loan[3]}}</td>
+                    <td>{{msgDict['msgType3']}}</td>
+                    {% endif %}
+                    {% endfor %}
+            </table>
+        </div>
+        {% endblock %}
+        {% block sidebar %}
+        <a href="/loans/displayloans">Display all loans</a>
+        <a href="/loans/loanbook">Loan a book</a>
+        <a href="/loans/returnbook">return a book</a>
+        <a href="/loans/lateloans">Display late loans</a>
+        {% endblock %}
+        {% block footer %}
+        {{super()}}
+        {% endblock %}

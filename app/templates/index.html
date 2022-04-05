@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<h1>HomePage</h1>
+<a href="/home/DBtest">Test DataBase</a><br><br>
+<a href="/home/DBreset">Reset The DataBase</a>
+<p class="important">
+    Welcome to the library
+</p>
+<strong>{{msg}}</strong>
+{% endblock %}
+{% block footer %}
+{{super()}}
+{% endblock %}

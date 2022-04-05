@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}Add a Book{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+{% block content %}
+<h1>Return a Book</h1>
+
+<form method="post">
+    <label>Book name: <input type="text" name="bookName"></label><br>
+    <label>Customer name: <input type="text" name="customerName"></label><br>
+
+    <input type="submit" value="Submit">
+</form> <br>
+<strong>{{ failMSG }}</strong>
+<strong>{{ SuccessMSG }}</strong>
+
+{% endblock %}
+{% block sidebar %}
+<a href="/loans/displayloans">Display all loans</a>
+<a href="/loans/loanbook">Loan a book</a>
+<a href="/loans/returnbook">return a book</a>
+<a href="/loans/lateloans">Display late loans</a>
+{% endblock %}
+{% block footer %}
+{{super()}}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Books{% endblock %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<h1>Customers</h1>
+<p class="important">
+    Select action for customers
+    {% endblock %}
+    {% block sidebar %}
+    <a href="/customers/displaycustomers">Display all customers</a>
+    <a href="/customers/addcustomer">Add a customer</a>
+    <a href="/customers/removecustomer">Remove a customer</a>
+    {% endblock %}
+    {% block footer %}
+    {{super()}}
+    {% endblock %}

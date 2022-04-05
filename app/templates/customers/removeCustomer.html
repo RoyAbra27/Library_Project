@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block title %}Find a Customer{% endblock %}
+
+<head>
+    {% block head %}
+    {{ super() }}
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #7221be;
+            color: white;
+        }
+    </style>
+    {% endblock %}
+</head>
+<script>
+    var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+    var alertTrigger = document.getElementById('liveAlertBtn')
+
+    function alert(message, type) {
+        var wrapper = document.createElement('div')
+        wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+        alertPlaceholder.append(wrapper)
+    }
+
+    if (alertTrigger) {
+        alertTrigger.addEventListener('click', function () {
+            alert('Nice, you triggered this alert message!', 'success')
+        })
+    }
+</script>
+{% block content %}
+<h1>Remove a Customer</h1>
+
+<form method="POST">
+    <label>Name: <input type="text" name="customerInputName" required></label><br>
+    <input type="submit" value="Submit">
+</form> <br>
+<strong>{{msg}}</strong>
+
+{% endblock %}
+{% block sidebar %}
+<a href="/customers/displaycustomers">Display all customers</a>
+<a href="/customers/addcustomer">Add a customer</a>
+<a href="/customers/removecustomer">Remove a customer</a>
+{% endblock %}
+{% block footer %}
+{{super()}}
+{% endblock %}

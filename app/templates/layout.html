@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% block head %}
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            width: 100%;
+        }
+
+        li {
+            float: left;
+            border-right: 1px solid #bbb;
+        }
+
+        li:last-child {
+            border-right: none;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #7221be;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3px;
+            background-color: #7221be;
+            color: white;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+
+        }
+
+        .navbar {
+            padding-bottom: 47px;
+        }
+
+        .sidebar {
+            margin-bottom: -55550;
+            padding-bottom: -55550;
+            width: 200px;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .sidebar a {
+            display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .sidebar a.active {
+            background-color: #7221be;
+            color: white;
+        }
+
+        .sidebar a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        div.content {
+            margin-left: 200px;
+            padding: 1px 16px;
+            padding-bottom: 30px;
+            height: 1000px;
+        }
+
+        @media screen and (max-width: 700px) {
+            .sidebar {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                z-index: 5 !important;
+
+            }
+
+            .sidebar a {
+                float: left;
+
+            }
+
+            div.content {
+                margin-left: 0;
+                padding-bottom: 30px;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .sidebar a {
+                text-align: center;
+                float: none;
+            }
+        }
+
+        .center {
+            width: 50%;
+            padding-top: 50px;
+            margin-left: 27%;
+            padding-bottom: 30px;
+            text-align: center;
+            float: left;
+        }
+    </style>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    {% endblock %}
+</head>
+
+<body>
+    <div class="navbar">
+        {% block navbar %}
+        <ul>
+            <li><a class="active" href="/home">Home</a></li>
+            <li><a href="/customers">Customers</a></li>
+            <li><a href="/books">Books</a></li>
+            <li><a href="/loans">Loans</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+    <div class="center">
+        {%block content %}
+        {% endblock %}
+    </div>
+    <div class="sidebar">
+        {%block sidebar %}
+        {% endblock %}
+    </div>
+
+
+    <div id="footer">
+        {% block footer %}
+        <footer>
+            <p>© By Roy Abramovich<br>
+                <a href="mailto:roy.ab32@gmail.com">roy@bra.com</a>
+            </p>
+        </footer>
+        {% endblock %}
+    </div>
+
+</body>
+
+</html>
