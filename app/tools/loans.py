@@ -12,7 +12,7 @@ class Loans():
     def displayLoans(self):
         cur.execute("SELECT *  FROM Loans")
         loansTable = cur.fetchall()
-        return render_template("loans/displayloans.html", loansTable=loansTable)
+        return render_template("loans/displayLoans.html", loansTable=loansTable)
 
     def loanABook(self):
         if request.method == "POST":
