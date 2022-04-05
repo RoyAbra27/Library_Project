@@ -118,7 +118,7 @@ def loansMain():
     return render_template('loans/loansMain.html')
 
 
-@app.route('/loans/displayloans', methods=['GET', 'POST'])
+@app.route('/loans/displayloans')
 def displayLoans():
     return loans.displayLoans()
 
